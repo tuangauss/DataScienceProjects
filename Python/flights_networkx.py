@@ -53,7 +53,7 @@ def simple_visualization (airport_df, routes_df):
 		# default graph using Networkx inbuilt graph tools
 		plt.figure(figsize = (10,9))
 		nx.draw_networkx(graph)
-		plt.savefig("./images/map_0.png", format = "png", dpi = 300)
+		plt.savefig("./images/networkx_basemap/map_0.png", format = "png", dpi = 300)
 		plt.show()
 
 		# Set up base map
@@ -84,7 +84,7 @@ def simple_visualization (airport_df, routes_df):
 		m.drawstates(linewidth = 0.2)
 		m.drawcoastlines(linewidth=3)
 		plt.tight_layout()
-		plt.savefig("./images/map_2.png", format = "png", dpi = 300)
+		plt.savefig("./images/networkx_basemap/map_2.png", format = "png", dpi = 300)
 		plt.show()
 		print ("successful visualization")
 		return 0
@@ -158,7 +158,7 @@ def advanced_visualization (airport_df, routes_df):
 		plt.title("Network graph of flight routes in the USA", fontsize = 30)
 		#m.bluemarble()
 		plt.tight_layout()
-		plt.savefig("./images/map_3.png", format = "png", dpi = 300)
+		plt.savefig("./images/networkx_basemap/map_3.png", format = "png", dpi = 300)
 		plt.show()
 		print ("successful visualization")
 		return 0
