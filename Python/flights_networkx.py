@@ -23,6 +23,7 @@ def main:
 	routes_df['Dest Airport ID'] = pd.to_numeric(routes_df['Dest Airport ID'].astype(str), 'coerce')
 	routes_df = routes_df.dropna(subset=["Source Airport ID", "Dest Airport ID"]) 
 
+
 	simple_visualization(airport_df, routes_df)
 	advanced_visualization(airport_df, routes_df)
 
@@ -47,7 +48,13 @@ def simple_visualization (airport_df, routes_df):
 
 		# Create graph
 		graph = nx.from_pandas_dataframe(routes_us, source = 'Source Airport', target = 'Dest Airport',
-		                        edge_attr = 'counts',create_using = nx.MultiDiGraph())
+		                        edge_attr = 'counts',create_using = nx.DiGraph())
+
+		# default graph using Networkx inbuilt graph tools
+		plt.figure(figsize = (10,9))
+		nx.draw_networkx(graph)
+		plt.savefig("./images/map_0.png", format = "png", dpi = 300)
+		plt.show()
 
 		# Set up base map
 		plt.figure(figsize=(15,20))
@@ -77,7 +84,7 @@ def simple_visualization (airport_df, routes_df):
 		m.drawstates(linewidth = 0.2)
 		m.drawcoastlines(linewidth=3)
 		plt.tight_layout()
-		plt.savefig("./images/map_1.png", format = "png", dpi = 300)
+		plt.savefig("./images/map_2.png", format = "png", dpi = 300)
 		plt.show()
 		print ("successful visualization")
 		return 0
@@ -104,7 +111,7 @@ def advanced_visualization (airport_df, routes_df):
 
 		# Create graph
 		graph = nx.from_pandas_dataframe(routes_us, source = 'Source Airport', target = 'Dest Airport',
-		                        edge_attr = 'counts',create_using = nx.MultiDiGraph())
+		                        edge_attr = 'counts',create_using = nx.DiGraph())
 
 		# Set up base map
 		plt.figure(figsize=(15,20))
@@ -129,7 +136,7 @@ def advanced_visualization (airport_df, routes_df):
 		                       node_color = 'r', alpha = 0.8,
 		                       node_size = [counts['total_flight'][x]*4  for x in graph.nodes() if counts['total_flight'][x] >= 100])
 
-		nx.draw_networkx_labels(G = graph, pos = pos, font_size=25,
+		nx.draw_networkx_labels(G = graph, pos = pos, font_size=10,
 		                        labels = {x:x for x in graph.nodes() if counts['total_flight'][x] >= 100})
 
 		nx.draw_networkx_nodes(G = graph, pos = pos, nodelist = [x for x in graph.nodes() if counts['total_flight'][x] < 100],
@@ -137,7 +144,7 @@ def advanced_visualization (airport_df, routes_df):
 		                       node_size = [counts['total_flight'][x]*4  for x in graph.nodes() if counts['total_flight'][x] < 100])
 
 		nx.draw_networkx_edges(G = graph, pos = pos, edge_color = 'g', width = routes_us['counts']*0.75, 
-		                       alpha=0.3, arrows = False)
+		                       alpha=0.06, arrows = False)
 
 		m.drawcountries(linewidth = 3)
 		m.drawstates(linewidth = 0.2)
@@ -151,7 +158,7 @@ def advanced_visualization (airport_df, routes_df):
 		plt.title("Network graph of flight routes in the USA", fontsize = 30)
 		#m.bluemarble()
 		plt.tight_layout()
-		plt.savefig("./images/map_2.png", format = "png", dpi = 300)
+		plt.savefig("./images/map_3.png", format = "png", dpi = 300)
 		plt.show()
 		print ("successful visualization")
 		return 0
