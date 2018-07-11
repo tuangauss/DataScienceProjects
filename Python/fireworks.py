@@ -121,8 +121,8 @@ def simulate(cv):
         tnew = time()
         t, dt = tnew, tnew - t
         for point in explode_points:
-            for o in point:
-                o.update(dt)
+            for part in point:
+                part.update(dt)
         cv.update()
         total_time += dt
     # recursive call to continue adding new explosion on canvas
