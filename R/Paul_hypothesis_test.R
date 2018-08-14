@@ -1,7 +1,7 @@
 #######################################
-# Hypothesis testing procedure ########
-# The curious case of Paul the Octopus#
-# Fisher vs N-p approach ##############
+## Hypothesis testing procedure 
+## The curious case of Paul the Octopus
+## Fisher vs N-p approach
 #######################################
 
 # The script is self-containing, no extra module or libary needed
