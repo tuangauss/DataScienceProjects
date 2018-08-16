@@ -1,26 +1,40 @@
 library (dplyr)
 library (ggplot2)
+library (xkcd)
 library (extrafont)
-# probably need to run in a mac
+
 download.file("http://simonsoftware.se/other/xkcd.ttf",
               dest="xkcd.ttf", mode="wb")
-font_import(path = ".", pattern="xkcd")
+system("cp xkcd.ttf ~/Library/Fonts")
+font_import(path="~/Library/Fonts", pattern = "xkcd", prompt=FALSE)
 fonts()
-loadfonts()
+fonttable()
+if(.Platform$OS.type != "unix") {
+  ## Register fonts for Windows bitmap output
+    loadfonts(device="win")
+  } else {
+  loadfonts()
+}
 
 # extract historic results
-history <- read.csv("history.csv", stringsAsFactors = FALSE)
+history <- read.csv("https://raw.githubusercontent.com/tuangauss/Various-projects/master/data/history.csv", stringsAsFactors = FALSE)
 
 # get info from the 2010 up to 2018
 seasons <- sapply(10:17, function(x) paste0(2000+x,'-',x+1))
 
 
 graph_func <- function(season){
+  if (season[1] == "2017-18"){
+    title = "Last season: 2017-2018"
+  }
+  else{
+    title = "From 2010-11 to 2017-18"
+  }
   data <- history %>% 
     filter (Season %in% season, div == 'E0') %>%
     mutate (total = FTAG + FTHG)
   
-  ave_Score <- mean(data$total)
+  ave_score <- mean(data$total)
   
   prob_data <- data %>%
     group_by(total) %>%
@@ -33,16 +47,8 @@ graph_func <- function(season){
               col = "red", size = 0.5) +
     geom_point(aes(x = total, y = dpois(x=total, lambda = ave_score)), 
                col = "black", size = 3) +
-    ggtitle("Probability of total goal per game") +
-    theme(axis.line = element_line(size=1, colour = "black"),
-          panel.grid.major = element_blank(),
-          panel.grid.minor = element_blank(),
-          panel.border = element_blank(),
-          panel.background = element_blank(),
-          plot.title=element_text(size = 20, family="xkcd-Regular"),
-          text=element_text(size = 16, family="xkcd-Regular"),
-          axis.text.x=element_text(colour="black", size = 12),
-          axis.text.y=element_text(colour="black", size = 12))
+    ggtitle(title) + labs (x = "Total Goal", y = "Probability") +
+    theme_xkcd()
 }
 
 graph_func(seasons)
