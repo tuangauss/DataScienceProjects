@@ -1,18 +1,12 @@
-#########################
-# Simulation of the EPL
-# Poisson model
-# Article: 
-# Author: Tuan Nguyen
-#########################
-
 library (dplyr)
 source ('clean_data.R')
 
 # get score of a match
 get_score <- function (home, away){
   # try to get from history, pair
-  subset <- hist_pair.pl[ which( hist_pair.pl$HomeTeam ==home | hist_pair.pl$AwayTeam ==away), ]
-  if (dim(subset)[1] == 1){
+  subset <- hist_pair.pl[ which( hist_pair.pl$HomeTeam ==home & hist_pair.pl$AwayTeam ==away), ]
+  # only use this method if we have at least 4 matches
+  if ((dim(subset)[1] == 1) & (subset$match[1] > 3)){
     h_scored = rpois(1, subset$ave_home_scored[1])
     a_scored = rpois(1, subset$ave_away_scored[1])
   }
@@ -38,14 +32,14 @@ rank <- function (m_result){
     away = m_result$AWAY.TEAM[i]
     h_goal = m_result$h_scored[i]
     a_goal = m_result$a_scored[i]
-  
+    
     # add goal
     table[table$name == home,]$goal_score = table[table$name == home,]$goal_score + h_goal
     table[table$name == home,]$goal_conceded = table[table$name == home,]$goal_conceded + a_goal
     table[table$name == away,]$goal_score = table[table$name == away,]$goal_score + a_goal
     table[table$name == away,]$goal_conceded = table[table$name == away,]$goal_conceded + h_goal
     
-
+    
     # calculate point
     if (h_goal > a_goal){
       table[table$name == home,]$point = table[table$name == home,]$point + 3
@@ -58,7 +52,7 @@ rank <- function (m_result){
       table[table$name == away,]$point = table[table$name == away,]$point + 1
     }
   }
- 
+  
   table$goal_dif <- table$goal_score - table$goal_conceded
   table <- table[order(-table$point, -table$goal_dif, -table$goal_score), ]
   
@@ -67,8 +61,8 @@ rank <- function (m_result){
 
 simulate <- function(fixtures){
   matches <- mapply(get_score, fixtures$HOME.TEAM, fixtures$AWAY.TEAM, SIMPLIFY = FALSE)
-  fixtures$h_scored <- sapply(matches, function(x) x[1])
-  fixtures$a_scored <- sapply(matches, function(x) x[2])
+  fixtures$h_scored <- unlist(sapply(matches, function(x) x[1]))
+  fixtures$a_scored <- unlist(sapply(matches, function(x) x[2]))
   table <- rank(fixtures)
   return (table)
 }
