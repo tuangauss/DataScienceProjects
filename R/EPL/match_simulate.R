@@ -2,7 +2,7 @@ library (dplyr)
 source ('clean_data.R')
 
 # get most frequent score line of a match after n, sim time
-nsim = 10
+nsim = 100
 get_score <- function (home, away, nsim){
   # try to get from history, pair
   subset <- hist_pair.pl[ which( hist_pair.pl$HomeTeam ==home | hist_pair.pl$AwayTeam ==away), ]
@@ -15,8 +15,9 @@ get_score <- function (home, away, nsim){
   t_ave_h_c = ave[ave$Team == home,]$ave_conceded_h
   t_ave_a_s = ave[ave$Team == away,]$ave_scored_a
   score_line = character(length(nsim))
+  # simulation idea similar to that of sim.R
   for (i in 1:nsim){
-    if (dim(subset)[1] == 1){
+    if ((dim(subset)[1] == 1) & (subset$match[1] > 3)){
       h_scored = rpois(1, ave_h_s)
       a_scored = rpois(1, ave_a_s)
     }
@@ -35,4 +36,3 @@ round_1 <- head(fixtures,10)
 matches <- mapply(get_score, round_1$HOME.TEAM, round_1$AWAY.TEAM, nsim, SIMPLIFY = FALSE)
 round_1$score_line <- sapply(matches, function(x) x[1])
 round_1$prob <- sapply(matches, function(x) x[2])
-
