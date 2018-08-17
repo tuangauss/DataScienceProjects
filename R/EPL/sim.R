@@ -97,8 +97,13 @@ for (sim in 1:nsim){
 
 # convert to percentage
 tabulate_data <- tabulate_data %>%
-  mutate (champion = 100*champion/nsim,
-          runner_up = 100*runner_up/nsim,
-          top_4 = 100*top_4/nsim,
-          top_6 = 100*top_6/nsim,
-          relegate = 100*relegate/nsim)
+  mutate (champion = champion/nsim,
+          runner_up = runner_up/nsim,
+          top_4 = top_4/nsim,
+          top_6 = top_6/nsim,
+          relegate = relegate/nsim)
+                                     
+# write result into csv
+write.csv(tabulate_data, "tabulate_data.csv", row.names = FALSE)
+
+                                   
