@@ -9,6 +9,7 @@ All the codes are written entirely in Python or R.
 ## Regression with Bayesian statistics
 
 Article: https://towardsdatascience.com/how-bayesian-statistics-convinced-me-to-hit-the-gym-fa737b0a7ac
+<img src="/images/bayesian.png" width = "350"/>
 
 ## Visualizing Network with Python and Networkx
 
