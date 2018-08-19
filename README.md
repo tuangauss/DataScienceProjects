@@ -4,6 +4,8 @@ This folder contains various projects I have been working on or I am still in th
 
 All the codes are written entirely in Python or R.
 
+*** I published almost exclusively on Towards Data Science publication through Partnership program so please check out these articles as a way to support me and my future projects
+
 ### Predicting the EPL with R and Poisson model
 
 [Article link](https://towardsdatascience.com/o-jogo-bonito-predicting-the-premier-league-with-a-random-model-1b02fa3a7e5a)
