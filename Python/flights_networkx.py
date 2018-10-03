@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 from mpl_toolkits.basemap import Basemap as Basemap
 import matplotlib.lines as mlines
 
-def main:
+def main():
 	# download airport info data
 	airport_col = ['ID', 'Name', 'City', 'Country','IATA', 'ICAO', 'Lat', 'Long', 'Alt', 
 	               'Timezone', 'DST', 'Tz database time zone', 'type', 'source']
@@ -47,7 +47,7 @@ def simple_visualization (airport_df, routes_df):
 		pos_data = counts.merge(airport_us, on = 'IATA')
 
 		# Create graph
-		graph = nx.from_pandas_dataframe(routes_us, source = 'Source Airport', target = 'Dest Airport',
+		graph = nx.from_pandas_edgelist(routes_us, source = 'Source Airport', target = 'Dest Airport',
 		                        edge_attr = 'counts',create_using = nx.DiGraph())
 
 		# default graph using Networkx inbuilt graph tools
@@ -110,7 +110,7 @@ def advanced_visualization (airport_df, routes_df):
 		pos_data = counts.merge(airport_us, on = 'IATA')
 
 		# Create graph
-		graph = nx.from_pandas_dataframe(routes_us, source = 'Source Airport', target = 'Dest Airport',
+		graph = nx.from_pandas_edgelist(routes_us, source = 'Source Airport', target = 'Dest Airport',
 		                        edge_attr = 'counts',create_using = nx.DiGraph())
 
 		# Set up base map
