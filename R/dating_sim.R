@@ -48,10 +48,10 @@ simulation <- function(n){
 }
 
 # applying simulation(n) to different values of n
-theo_p <- sapply(2:30, function(x) simulation(x)[1])
-plot(2:30, theo_p, ylim = c(0.2,1), main = 'Optimal probability \n P(S_n,k)',
+opt_p <- sapply(2:30, function(x) simulation(x)[1])
+plot(2:30, opt_p, ylim = c(0.2,1), main = 'Optimal probability \n P(S_n,k)',
      xlab = 'N', ylab = 'Probability')
 
-theo_ratio <- sapply(2:30, function(x) simulation(x)[2])
-plot(2:30, theo_ratio, ylim = c(0.2,1.1), main = 'Optimal ratio \n M/N',
+opt_ratio <- sapply(2:30, function(x) simulation(x)[2])
+plot(2:30, opt_ratio, ylim = c(0.2,1.1), main = 'Optimal ratio \n M/N',
      xlab = 'N', ylab = 'Ratio')
