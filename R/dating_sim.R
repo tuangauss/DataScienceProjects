@@ -1,3 +1,9 @@
+############################################
+## The Optimal dating strategy
+## Why we should always reject the first 37%
+## An MC simulation
+############################################
+
 # calculate the theoretical probability of P(S_n,k)
 theo_prob <- function(x){
   if (x == 1) return (1/100)
