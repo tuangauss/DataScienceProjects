@@ -1,5 +1,5 @@
 library(tidyverse)
-new_season <- read.csv("prediction_result.csv", stringsAsFactors = FALSE)
+source("prediction.R")
 # in MAC, may have to go to font book to activate xkcd.ttf
 #library(extrafont)
 #font_import(path = ".", pattern="xkcd")
@@ -25,7 +25,7 @@ row_max_prob <- function(df, row_idx, find_max){
 betting_round <- function (round, method, capital){
   total_return = 0
   
-  round_data <- new_season %>%
+  round_data <- df_prediction %>%
     filter(Round == round) %>%
     mutate(method = method,
            predict_outcome = ifelse(method == "random", sample(c("H", "D", "A"),n(), replace = TRUE),
@@ -99,7 +99,7 @@ return_table %>%
 betting_round <- function (round, predict_method, capital){
   total_return = 0
   
-  round_data <- new_season %>%
+  round_data <- df_prediction %>%
     filter(Round == round)
   
   for (i in 1:dim(round_data)[1]){
