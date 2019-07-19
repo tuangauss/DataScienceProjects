@@ -1,3 +1,9 @@
+########################
+# Illustrative calculation
+# Article: A Bayesian quest to find God
+# Published: July 19, 2019
+########################
+
 library (tidyverse)
 
 bayes <- function(x, y_x, y_nx){
