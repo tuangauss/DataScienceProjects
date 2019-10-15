@@ -1,8 +1,8 @@
-# Description
+# Overview
 
 This folder contains various projects I have been working on or I am still in the process of developing. Most of the projects comes with a Medium article but I also carefully commented everything for readership purposes.
 
-All the codes are written entirely in Python or R.
+All the codes are written entirely in Python or R. I used the two languages almost interchangebly. It really boils down to how conveniently a specific functionality is supported (scraping in Python and data processing with dplyr piping in R).
 
 *** I published almost exclusively on Towards Data Science publication through Medium's Partnership program so please check out these articles as a way to support me and my future projects
 
