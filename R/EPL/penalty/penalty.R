@@ -1,15 +1,13 @@
+################################
+#### Data Science Project  #####
+# Article:                     #  
+# https://tinyurl.com/y2ynruqo #
+################################
+
 library(MASS)
 library(tidyverse)
 library(betareg)
 library(xkcd)
-library(broom)
-
-# get xkcd font
-# download it first
-font_import("c:/users/lt_asus/desktop/penalty_project/")
-fonts()
-fonttable()
-loadfonts(device="win")
 
 # read raw_data
 raw_data <- read.csv("./all_penalties.csv",
@@ -55,6 +53,8 @@ dataman <- data.frame( x= 0.3, y=3,
                        angleleftleg = 3*pi/2  + pi / 12 ,
                        anglerightleg = 3*pi/2  - pi / 12,
                        angleofneck = runif(1, min = 3 * pi / 2 - pi/10 , max = 3 * pi / 2 + pi/10))
+
+# draw histogram of conversion rates
 player_data %>%
   ggplot(aes(ratio)) +
   geom_histogram(breaks = 5:25/25,
@@ -63,12 +63,14 @@ player_data %>%
   labs (x = "\nHistogram of penalties conversion rate", y = "Count") +
   theme_xkcd() 
 
+# fit a beta distribution on the histogram
 m <- MASS::fitdistr(player_data$ratio, dbeta,
                     start = list(shape1 = 10, shape2 = 1),
                     lower=c(0.1,0.1))
 alpha0 <- m$estimate[1]
 beta0 <- m$estimate[2]
 
+# plot the fit with some fun xkcd
 ggplot(player_data) +
   geom_histogram(aes(ratio, y = ..density..),
                  breaks = 5:25/25,
@@ -100,6 +102,7 @@ specific_players <- adjusted_ratio %>%
   mutate(alpha = total_score + alpha0,
          beta = total - total_score + beta0)
 
+# draw posterior beta distribution for these players
 specific_players %>%
   crossing(x=seq(0.4,0.99,.002)) %>%
   ungroup() %>%
@@ -110,7 +113,7 @@ specific_players %>%
   xlab("Conversion rate") +
   theme_xkcd()
 
-
+# draw actual vs adjusted ratio plot
 ggplot(adjusted_ratio, aes(ratio, eb_estimate, color = total)) +
   geom_hline(yintercept = alpha0 / (alpha0 + beta0), color = "red", lty = 2) +
   geom_point() +
@@ -120,11 +123,6 @@ ggplot(adjusted_ratio, aes(ratio, eb_estimate, color = total)) +
   ylim(0.5,1) +
   xlab("Actual goal scoring average") +
   ylab("Posterior goal scoring average")
-
-#interval of top 10
-top10 <- adjusted_ratio %>%
-  arrange(desc(eb_estimate)) %>%
-  top_n(10)
 
 #### fit 2 beta distributions
 m<- betamix(ratio ~ 1| 1, data = player_data, k = 1:3)
