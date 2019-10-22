@@ -39,3 +39,7 @@ All the codes are written entirely in Python or R. I used the two languages almo
 [Article link](https://towardsdatascience.com/what-can-an-octopus-tell-us-about-the-biggest-debate-in-statistical-theory-f017295d781f)
 
 <img src = "/images/paul.png" width = "300"/>
+
+### Deep Privacy 
+
+[Article link](https://github.com/hukkelas/DeepPrivacy)
