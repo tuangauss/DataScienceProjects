@@ -2,6 +2,7 @@ library(MASS)
 library(tidyverse)
 library(betareg)
 library(xkcd)
+library(broom)
 
 # get xkcd font
 # download it first
@@ -90,13 +91,35 @@ adjusted_ratio <- player_data %>%
   mutate(eb_estimate = (total_score + alpha0) / (total + alpha0 + beta0)) %>%
   arrange(desc(eb_estimate))
 
+# posterior plots for specific players:
+specific_players <- adjusted_ratio %>%
+  filter(name %in% c("Cristiano Ronaldo",
+                     "Nicolas Pepe",
+                     "Alexis Sanchez",
+                     "Antoine Griezmann")) %>%
+  mutate(alpha = total_score + alpha0,
+         beta = total - total_score + beta0)
+
+specific_players %>%
+  crossing(x=seq(0.4,0.99,.002)) %>%
+  ungroup() %>%
+  mutate(density=dbeta(x,alpha,beta)) %>%
+  ggplot(aes(x, density, color = name)) +
+  geom_line() +
+  stat_function(fun=function(x) dbeta(x, alpha0, beta0), lty = 2, color = 'black') +
+  xlab("Conversion rate") +
+  theme_xkcd()
+
+
 ggplot(adjusted_ratio, aes(ratio, eb_estimate, color = total)) +
   geom_hline(yintercept = alpha0 / (alpha0 + beta0), color = "red", lty = 2) +
   geom_point() +
   geom_abline(color = "red") +
-  scale_colour_gradient(trans = "log", breaks = 10 ^ (1:5)) +
-  xlab("Goal scoring average") +
-  ylab("Empirical Bayes goal scoring average")
+  scale_colour_gradient(breaks = c(0,20,30,50,70)) +
+  xlim(0.5,1) +
+  ylim(0.5,1) +
+  xlab("Actual goal scoring average") +
+  ylab("Posterior goal scoring average")
 
 #interval of top 10
 top10 <- adjusted_ratio %>%
