@@ -124,7 +124,10 @@ ggplot(adjusted_ratio, aes(ratio, eb_estimate, color = total)) +
   xlab("Actual goal scoring average") +
   ylab("Posterior goal scoring average")
 
-#### fit 2 beta distributions
+               
+#### When it seems that a unimodal beta distribution is not a good fit
+#### we can use E-M algorithm (implemented in the betareg package
+#### to fit 2 beta distributions
 m<- betamix(ratio ~ 1| 1, data = player_data, k = 1:3)
 
 mu <- plogis(coef(m)[,1])
@@ -136,6 +139,7 @@ cl <- clusters(m)
 
 # plotting
 ## separate histograms for both clusters
+## TODO: convert back to ggplot code
 hist(subset(player_data, cl == 1)$ratio, breaks = 5:25/25, freq = FALSE,
      col = hcl(0, 50, 80), main = "", xlab = "Penalty Conversion Rate", ylim = c(0, 9))
 
@@ -153,8 +157,8 @@ lines(ys, dbeta(ys, shape1 = a[2], shape2 = b[2]),
 abline(v = mu[1], col = hcl(0, 80, 50), lty = 2, lwd = 2)
 abline(v = mu[2], col = hcl(240, 80, 50), lty = 2, lwd = 2)
 
-
-## 
+## repeat Bayesian updating
+## only group specific this time
 post <- posterior(m)
 post[,1]
 # posterior probabilies of being assigned to each group
