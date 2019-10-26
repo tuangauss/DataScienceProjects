@@ -56,13 +56,10 @@ new_season$H <- sapply(matches, function(x) x[1])
 new_season$D <- sapply(matches, function(x) x[2])
 new_season$A <- sapply(matches, function(x) x[3])
 
-
 df_prediction <- new_season %>%
-  mutate(poisson_predict = result_calibrate(H,D,A),
-         Merson_predict = result_calc(Merson.H, Merson.A))
-
-
-
-
-
-
+  mutate(poisson_predict = result_calibrate(H,D,A))
+                       
+# The data about Paul Merson's prediction seems to get lost somehow                       
+#df_prediction <- new_season %>%
+#  mutate(poisson_predict = result_calibrate(H,D,A),
+#         Merson_predict = result_calc(Merson.H, Merson.A))
