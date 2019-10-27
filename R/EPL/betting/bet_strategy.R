@@ -45,32 +45,32 @@ betting_round <- function (round, method, capital){
 }
 
 # inititate a table to store return result
+# remove Paul's Merson bet
 return_table <- data.frame(round = 0:30,
-                            Poisson = rep(0,31),
-                            random_bet = rep(0,31),
-                            Merson_bet = rep(0,31))
+                           Poisson = rep(0,31),
+                           random_bet = rep(0,31))
 
-return_table[1,c("Poisson", "random_bet", "Merson_bet")] <- rep(1000,3)
+return_table[1,c("Poisson", "random_bet")] <- rep(1000,2)
 
 for (i in 1:30){
   Poisson_return <- betting_round(i, "poisson",1000/30)
   random_return  <- betting_round(i, "random", 1000/30)
-  Merson_return  <- betting_round(i, "Merson",1000/30)
+  #Merson_return  <- betting_round(i, "Merson",1000/30)
 
   return_table[i+1,"Poisson"]    <- Poisson_return
   return_table[i+1,"random_bet"] <- random_return
-  return_table[i+1,"Merson_bet"] <- Merson_return
+  #return_table[i+1,"Merson_bet"] <- Merson_return
 }
 
 # we are interested the change in the portfolio overtime
 return_table$Poisson    <- cumsum(return_table$Poisson)
 return_table$random_bet <- cumsum(return_table$random_bet)
-return_table$Merson_bet <- cumsum(return_table$Merson_bet)
+#return_table$Merson_bet <- cumsum(return_table$Merson_bet)
 
 return_table %>% 
   gather("method", "value", -round) %>%
-  mutate(method = factor(method, levels = c('Poisson', 'Merson_bet', 'random_bet'),
-                         labels = c('Poisson prediction', 'Merson prediction', 'random prediction'))) %>%
+  mutate(method = factor(method, levels = c('Poisson', 'random_bet'),
+                         labels = c('Poisson prediction', 'random prediction'))) %>%
   ggplot(aes(x=round, y=value, group=method)) +
   geom_line(aes(color=method)) +
   scale_x_continuous(breaks = seq(0, 30, by = 5)) +
