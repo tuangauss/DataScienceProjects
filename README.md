@@ -4,9 +4,15 @@ In this repository, you will find the code to various projects I have been worki
 
 My interests lie in the intersection of statistical techniques, data visualization and sports (especially football). All the codes are written entirely in Python or R. I used the two languages almost interchangebly. It really boils down to how a specific functionality in need is supported (scraping in Python and data processing with dplyr piping in R).
 
-*** 
+### The statistics of modern football:
+Here are a number of projects that explore the intricate statistical aspect of the Beautiful Game
 
-### Predicting the EPL with R and Poisson model
+- [Empirical Bayes and penalty taking ability](https://towardsdatascience.com/men-of-steel-finding-the-best-penalty-takers-with-empirical-bayes-estimation-aa0e126fb08b)
+- [Poisson process and match prediction](https://towardsdatascience.com/o-jogo-bonito-predicting-the-premier-league-with-a-random-model-1b02fa3a7e5a)
+- [The mathematics of football betting strategies](https://towardsdatascience.com/making-big-bucks-with-a-data-driven-sports-betting-strategy-6c21a6869171)
+- [Fisher vs Neyman-Person debate and Paul the Octopus](https://towardsdatascience.com/what-can-an-octopus-tell-us-about-the-biggest-debate-in-statistical-theory-f017295d781f)
+
+### Statistical theory and its application:
 
 [Article link](https://towardsdatascience.com/o-jogo-bonito-predicting-the-premier-league-with-a-random-model-1b02fa3a7e5a)
 
