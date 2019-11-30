@@ -14,34 +14,8 @@ Here are a number of projects that explore the intricate statistical aspect of t
 
 ### Statistical theory and its application:
 
-[Article link](https://towardsdatascience.com/o-jogo-bonito-predicting-the-premier-league-with-a-random-model-1b02fa3a7e5a)
+- [Bayes theorem and a probabilistic argument for God](https://towardsdatascience.com/a-bayesian-quest-to-find-god-b30934972473)
+- [Dating with probability theory](https://towardsdatascience.com/probability-theory-and-the-optimal-dating-strategy-for-2018-2b75b26fb0b) - Here we explore what probability theory has to say about the most optimal strategy to find the love of your life.
+- [Bayes theorem and why it matters to my workout routine](https://towardsdatascience.com/how-bayesian-statistics-convinced-me-to-hit-the-gym-fa737b0a7ac): A lightweight introduction to Bayes' theorem and how it helps convince me to hit the gym.
 
-<img src="/images/epl.png" width = "300"/>
-
-
-### Regression with Bayesian statistics
-
-[Article link](https://towardsdatascience.com/how-bayesian-statistics-convinced-me-to-hit-the-gym-fa737b0a7ac)
-
-<img src="/images/bayesian.png" width = "450"/>
-
-
-### Visualizing Network with Python and Networkx
-
-[Article link](https://towardsdatascience.com/catching-that-flight-visualizing-social-network-with-networkx-and-basemap-ce4a0d2eaea6)
-
-<img src = "/images/network.png" width = "350"/>
-
-
-### Simulating Fireworks
-
-[Article link](https://towardsdatascience.com/having-your-own-fun-how-to-build-your-own-macys-firework-show-with-python-and-tkinter-79cc31631b44)
-
-<img src = "/images/fireworks.gif" width = "250"/>
-
-
-### Theory of statistic (Fisher vs Neyman-Pearson)
-
-[Article link](https://towardsdatascience.com/what-can-an-octopus-tell-us-about-the-biggest-debate-in-statistical-theory-f017295d781f)
-
-<img src = "/images/paul.png" width = "300"/>
+## General tutorials
