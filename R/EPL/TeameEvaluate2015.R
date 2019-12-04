@@ -1,18 +1,21 @@
-library(fpc)
-library(cluster)
-library(psych)
+# Load libraries and read files
+packages <- c("dplyr", "fpc", "cluster", "psych")
+lapply(packages, library, character.only = TRUE)
 source("http://reuningscherer.net/stat660/R/HClusEval.R.txt")
 source("http://www.reuningscherer.net/STAT660/R/parallel.r.txt")
 
-###############################################################
-#  Hierarchical Cluster Analysis - Soccer Data
-###############################################################
 raw_df <- read.csv("./Team2015season.csv",header=T)
+# scale data 
 
-#standardized data
-data1 <- raw_df[,2:20]
-rownames(data1) <- raw_df[,1]
-data1<- scale (data1)
+scaled_data <- raw_df %>%
+  remove_rownames() %>%
+  column_to_rownames("Team") %>%
+  scale()
+
+
+################################
+#  Hierarchical Cluster Analysis
+################################
 
 #Eucledian, Ward's method
 dist1<-dist(data1, method="euclidean")
@@ -26,8 +29,6 @@ cuts=cutree(clust1,k=4)
 cuts
 hclus_eval(data1, dist_m = 'euclidean', clus_m = 'ward', plot_op = T)
 
-#Make plot of four cluster solution in space desginated by first two
-#  two discriminant functions
 
 #Eucledian, single linkage method
 dist2<-dist(data1, method="euclidean")
