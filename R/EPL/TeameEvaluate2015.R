@@ -1,5 +1,8 @@
 library(fpc)
 library(cluster)
+library(psych)
+source("http://reuningscherer.net/stat660/R/HClusEval.R.txt")
+source("http://www.reuningscherer.net/STAT660/R/parallel.r.txt")
 
 ###############################################################
 #  Hierarchical Cluster Analysis - Soccer Data
@@ -21,9 +24,6 @@ rect.hclust(clust1,k=4)
 #get membership vector 
 cuts=cutree(clust1,k=4)
 cuts
-
-
-source("http://reuningscherer.net/stat660/R/HClusEval.R.txt")
 hclus_eval(data1, dist_m = 'euclidean', clus_m = 'ward', plot_op = T)
 
 #Make plot of four cluster solution in space desginated by first two
@@ -73,8 +73,6 @@ hclus_eval(data1, dist_m = 'manhattan', clus_m = 'single', plot_op = T)
 #  K-means Clustering - Soccer Data
 ###############################################################
 
-library(psych)
-
 #Just try five clusters to see how this works
 #  Centers gives the number of clusters desired.  
 #  You can either give a vector with the original centers, OR just specify the number of clusters.
@@ -87,7 +85,7 @@ for (i in 1:4){
   print (" ")
 }
 
-source("http://www.reuningscherer.net/STAT660/R/parallel.r.txt")
+
 soccer = read.csv("./Team2015season.csv",header=T)
 
 rownames(soccer)=soccer[,1]
