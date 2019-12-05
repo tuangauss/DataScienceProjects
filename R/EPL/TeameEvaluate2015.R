@@ -1,5 +1,5 @@
 # Load libraries and read files
-packages <- c("dplyr", "fpc", "cluster", "psych")
+packages <- c("dplyr", "fpc", "cluster", "psych", "dendextend")
 lapply(packages, library, character.only = TRUE)
 source("http://reuningscherer.net/stat660/R/HClusEval.R.txt")
 source("http://www.reuningscherer.net/STAT660/R/parallel.r.txt")
@@ -15,6 +15,8 @@ scaled_data <- raw_df %>%
 
 ################################
 #  Hierarchical Cluster Analysis
+#  Useful tutorial: 
+#  https://uc-r.github.io/hc_clustering
 ################################
 
 #Eucledian, Ward's method
