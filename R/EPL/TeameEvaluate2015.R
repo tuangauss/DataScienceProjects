@@ -1,7 +1,6 @@
 # Load libraries and read files
 packages <- c("dplyr", "fpc", "cluster", "psych", "dendextend")
 lapply(packages, library, character.only = TRUE)
-source("http://reuningscherer.net/stat660/R/HClusEval.R.txt")
 source("http://www.reuningscherer.net/STAT660/R/parallel.r.txt")
 
 raw_df <- read.csv("./Team2015season.csv",header=T)
@@ -20,57 +19,46 @@ scaled_data <- raw_df %>%
 ################################
 
 #Eucledian, Ward's method
-dist1<-dist(data1, method="euclidean")
-clust1<-hclust(dist1,method="ward.D")
+d_1 <- dist(scaled_data, method="euclidean")
+clust_1 <- hclust(d_1, method="ward.D")
 #draw the dendrogram
-plot(clust1,labels= raw_df$Team, cex=0.7, xlab="",ylab="Distance",main="Clustering for 60 teams")
-rect.hclust(clust1,k=4)
+plot(clust_1,
+     cex=0.7,
+     xlab="",
+     ylab="Distance",
+     main="Clusterings of 60 European teams")
+rect.hclust(clust_1, k = 4, border = 2:5)
 
 #get membership vector 
-cuts=cutree(clust1,k=4)
-cuts
-hclus_eval(data1, dist_m = 'euclidean', clus_m = 'ward', plot_op = T)
+cuts <- cutree(clust_1,k=4)
+scaled_data %>%
+  as.data.frame() %>%
+  mutate(cluster = cuts) %>%
+  head
 
+# Compute distance matrix
+res.dist <- dist(scaled_data, method = "euclidean")
 
-#Eucledian, single linkage method
-dist2<-dist(data1, method="euclidean")
-clust2<-hclust(dist2,method="single")
-#draw the dendrogram
-plot(clust2,labels=raw_df$Team, cex=0.7, xlab="",ylab="Distance",main="Clustering for 60 teams")
-rect.hclust(clust2,k=3)
+# Compute 2 hierarchical clusterings
+hc1 <- hclust(res.dist, method = "complete")
+hc2 <- hclust(res.dist, method = "ward.D2")
 
-#get membership vector (which country is in which group)
-cuts=cutree(clust1,k=5)
-cuts
+# Create two dendrograms and compare group partition
+dend1 <- as.dendrogram (hc1)
+dend2 <- as.dendrogram (hc2)
 
-hclus_eval(data1, dist_m = 'euclidean', clus_m = 'single', plot_op = T)
+dend_list <- dendlist(dend1, dend2)
 
-
-#Manhattan, Ward's method
-dist3<-dist(data1, method="manhattan")
-clust3<-hclust(dist3,method="ward.D")
-#draw the dendrogram
-plot(clust3,labels= data$Team, cex=0.7, xlab="",ylab="Distance",main="Clustering for 60 teams")
-rect.hclust(clust3,k=4)
-
-#get membership vector (which country is in which group)
-cuts=cutree(clust3,k=5)
-cuts
-
-hclus_eval(data1, dist_m = 'manhattan', clus_m = 'ward', plot_op = T)
-
-#Manhattan, single linkage method
-dist4<-dist(data1, method="manhattan")
-clust4<-hclust(dist4,method="single")
-#draw the dendrogram
-plot(clust4,labels= data$Team, cex=0.7, xlab="",ylab="Distance",main="Clustering for 60 teams")
-rect.hclust(clust3,k=3)
-
-#get membership vector (which country is in which group)
-cuts=cutree(clust3,k=3)
-cuts
-
-hclus_eval(data1, dist_m = 'manhattan', clus_m = 'single', plot_op = T)
+tanglegram(dend1, dend2,
+           lwd = 1,
+           edge.lwd = 1,
+           lab.cex = 0.5,
+           columns_width = c(8, 3, 8),
+           highlight_distinct_edges = FALSE, # Turn-off dashed lines
+           common_subtrees_color_lines = FALSE, # Turn-off line colors
+           common_subtrees_color_branches = TRUE, # Color common branches 
+           main = paste("entanglement =", round(entanglement(dend_list), 2))
+)
 
 ###############################################################
 #  K-means Clustering - Soccer Data
