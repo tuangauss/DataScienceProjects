@@ -82,27 +82,8 @@ fviz_cluster(km_results, data = scaled_data)
 set.seed(123)
 fviz_nbclust(scaled_data, kmeans, method = "wss")
 
-soccer = read.csv("./Team2015season.csv",header=T)
+# TODO: add above silhouette + gap statistics method
 
-rownames(soccer)=soccer[,1]
-
-soccer <- soccer [,-1]
-soccer <- soccer [, 1:20]
-
-cor (soccer)
-
-library(rela)
-fact=paf(as.matrix(soccer))
-summary(fact)
-fact$KMO
-bartlett.test(soccer)
-
-#Deciding on the number of factors
-compl=princomp(soccer, cor=T) #Remember cor=T so that PCA will use correlation matrix
-print(summary(compl),digits=2, loadings=compl$loadings,cuttoff=0)
-
-screeplot(compl, type="lines", col="red", lwd=2, pch=19, cex=1.2, main = "Scree Plot")
-parallelplot(compl)
 
 ##########################################################
 ##  Perform Factor Analysis using Maximum Likelihood (only option in factanal)
