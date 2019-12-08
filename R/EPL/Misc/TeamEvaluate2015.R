@@ -1,9 +1,9 @@
 # Load libraries and read files
-packages <- c("dplyr", "fpc", "cluster", "psych", "dendextend")
+packages <- c("dplyr", "fpc", "cluster", "factoextra", "dendextend")
 lapply(packages, library, character.only = TRUE)
 source("http://www.reuningscherer.net/STAT660/R/parallel.r.txt")
 
-raw_df <- read.csv("./Team2015season.csv",header=T)
+raw_df <- read.csv("./Team2015season.csv", header=T)
 # scale data 
 
 scaled_data <- raw_df %>%
@@ -60,11 +60,11 @@ tanglegram(dend1, dend2,
            main = paste("entanglement =", round(entanglement(dend_list), 2))
 )
 
-#######################################
+###########################################
 #  K-means clustering
 #  Useful tutorial: 
-#  https://uc-r.github.io/hc_clustering
-#######################################
+#  https://uc-r.github.io/kmeans_clustering
+###########################################
 
 # use 4 centers that Hc clustering suggests
 # nstart: attempts multiple initial configurations
