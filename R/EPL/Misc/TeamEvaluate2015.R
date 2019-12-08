@@ -66,17 +66,10 @@ tanglegram(dend1, dend2,
 #  https://uc-r.github.io/hc_clustering
 #######################################
 
-#Just try five clusters to see how this works
-#  Centers gives the number of clusters desired.  
-#  You can either give a vector with the original centers, OR just specify the number of clusters.
-km1=kmeans(data1,centers=4)
+km_results <- kmeans(scaled_data, centers = 4, nstart = 100)
+km_results
 
-#see which teams are in each cluster
-for (i in 1:4){
-  print(paste("Teams in Cluster ",i))
-  print(data$Team[km1$cluster==i])
-  print (" ")
-}
+fviz_cluster(km_results, data = scaled_data)
 
 
 soccer = read.csv("./Team2015season.csv",header=T)
