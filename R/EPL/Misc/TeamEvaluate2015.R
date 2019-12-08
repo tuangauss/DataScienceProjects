@@ -76,6 +76,11 @@ km_results
 # according to the first two PCs that explain the majority of the variance
 fviz_cluster(km_results, data = scaled_data)
 
+# Evaluating clustering
+# Best number of cluster using scree-plot (elbow method)
+# optimal total-wihtin cluster sum of square
+set.seed(123)
+fviz_nbclust(scaled_data, kmeans, method = "wss")
 
 soccer = read.csv("./Team2015season.csv",header=T)
 
