@@ -12,11 +12,11 @@ scaled_data <- raw_df %>%
   scale()
 
 
-################################
+#######################################
 #  Hierarchical Cluster Analysis
 #  Useful tutorial: 
 #  https://uc-r.github.io/hc_clustering
-################################
+#######################################
 
 #Eucledian, Ward's method
 d_1 <- dist(scaled_data, method="euclidean")
@@ -60,9 +60,11 @@ tanglegram(dend1, dend2,
            main = paste("entanglement =", round(entanglement(dend_list), 2))
 )
 
-###############################################################
-#  K-means Clustering - Soccer Data
-###############################################################
+#######################################
+#  K-means clustering
+#  Useful tutorial: 
+#  https://uc-r.github.io/hc_clustering
+#######################################
 
 #Just try five clusters to see how this works
 #  Centers gives the number of clusters desired.  
