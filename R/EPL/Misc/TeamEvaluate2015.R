@@ -82,7 +82,6 @@ fviz_cluster(km_results, data = scaled_data)
 set.seed(123)
 fviz_nbclust(scaled_data, kmeans, method = "wss")
 
-# TODO: add above silhouette + gap statistics method
 # Average Silhouette method
 # measuring the quality of the clusters
 # by how well object lies within a cluster
