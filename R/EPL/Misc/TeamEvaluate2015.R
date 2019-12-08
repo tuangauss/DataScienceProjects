@@ -83,7 +83,7 @@ set.seed(123)
 fviz_nbclust(scaled_data, kmeans, method = "wss")
 
 # TODO: add above silhouette + gap statistics method
-
+fviz_nbclust(scaled_data, kmeans, method = "silhouette")
 
 ##########################################################
 ##  Perform Factor Analysis using Maximum Likelihood (only option in factanal)
