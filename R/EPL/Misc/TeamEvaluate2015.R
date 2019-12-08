@@ -89,8 +89,12 @@ fviz_nbclust(scaled_data, kmeans, method = "wss")
 # try to maximize average silhouette
 fviz_nbclust(scaled_data, kmeans, method = "silhouette")
 
-
-# compute gap statistic
+# GAP statistics method
+# can apply to both kmeans and HC
+# compares the total intracluster variation
+# with their expected values 
+# under null reference distribution of the data
+# at various value of k
 set.seed(123)
 gap_stat <- clusGap(scaled_data,
                     FUN = kmeans,
