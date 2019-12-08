@@ -66,9 +66,14 @@ tanglegram(dend1, dend2,
 #  https://uc-r.github.io/hc_clustering
 #######################################
 
+# use 4 centers that Hc clustering suggests
+# nstart: attempts multiple initial configurations
+# and reports on the best one.
 km_results <- kmeans(scaled_data, centers = 4, nstart = 100)
 km_results
 
+# fviz_cluster does PCA and plot the data points 
+# according to the first two PCs that explain the majority of the variance
 fviz_cluster(km_results, data = scaled_data)
 
 
