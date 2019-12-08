@@ -89,6 +89,18 @@ fviz_nbclust(scaled_data, kmeans, method = "wss")
 # try to maximize average silhouette
 fviz_nbclust(scaled_data, kmeans, method = "silhouette")
 
+
+# compute gap statistic
+set.seed(123)
+gap_stat <- clusGap(scaled_data,
+                    FUN = kmeans,
+                    nstart = 100,
+                    K.max = 10,
+                    B = 50)
+# Print the result
+print(gap_stat, method = "firstmax")
+fviz_gap_stat(gap_stat)
+
 ##########################################################
 ##  Perform Factor Analysis using Maximum Likelihood (only option in factanal)
 ##  with Varimax Rotation
