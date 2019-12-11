@@ -22,5 +22,7 @@ Here are a number of projects that explore the intricate statistical aspect of t
 - [NetworkX and Basemap](https://towardsdatascience.com/catching-that-flight-visualizing-social-network-with-networkx-and-basemap-ce4a0d2eaea6) - Here is a comprehensive tutorial of how we can visualize geographical data with powerful tools that support Python.
 - [Tkinter and Python](https://towardsdatascience.com/having-your-own-fun-how-to-build-your-own-macys-firework-show-with-python-and-tkinter-79cc31631b44) - Building your own firework shows with Tkinter (and some math chops).
 - [Data visualization with Matplotlib and Seaborn](https://towardsdatascience.com/advanced-sports-visualization-with-pandas-matplotlib-and-seaborn-9c16df80a81b) - Learn how to construct publish-worthy visualizations with Matplotlib and Seaborn packages.
+
+### Machine Learning practicals:
 - [End-to-end Machine Learning project with R](https://github.com/tuangauss/DataScienceProjects/blob/master/R/end_to_end_projects.R) - Here is a full data science project that covers data collection, cleaning, visualization, machine learning and validation.
 - [Unsupervised Learning - Clustering method with R](https://github.com/tuangauss/DataScienceProjects/blob/master/R/EPL/Misc/TeamEvaluate2015.R) - An introduction to an array of unsupervised learning algorithms: Hierachical clustering, k-means, and Factor Analysis.
