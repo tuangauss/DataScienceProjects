@@ -4,7 +4,7 @@ In this repository, you will find the source code to various projects I have bee
 
 My interests lie in the intersection of statistical techniques, data visualization and sports (especially football). All the codes are written entirely in Python or R. I don't have a strong preference or attempt to make a concerted effort to code in a specific language/platform. the decision is mostly based on how specific functionalities needed for a project supported (scraping in Python and data processing with dplyr piping in R).
 
-### The statistics of modern football:
+#### The statistics of modern football:
 Here are a number of projects that explore the intricate statistical aspect of the Beautiful Game
 
 - [Empirical Bayes and penalty taking ability](https://towardsdatascience.com/men-of-steel-finding-the-best-penalty-takers-with-empirical-bayes-estimation-aa0e126fb08b)
@@ -12,13 +12,13 @@ Here are a number of projects that explore the intricate statistical aspect of t
 - [The mathematics of football betting strategies](https://towardsdatascience.com/making-big-bucks-with-a-data-driven-sports-betting-strategy-6c21a6869171) - With the Poisson model and some additional help from mathematical research, can we beat the bookies?
 - [Fisher vs Neyman-Person debate and Paul the Octopus](https://towardsdatascience.com/what-can-an-octopus-tell-us-about-the-biggest-debate-in-statistical-theory-f017295d781f) - We went over the theory (or many theories) of hypothesis testings and see how they apply to the psychic ability of Paul the Octopus.
 
-### Statistical theory and its application:
+#### Statistical theory and its application:
 
 - [Bayes theorem and a probabilistic argument for God](https://towardsdatascience.com/a-bayesian-quest-to-find-god-b30934972473)
 - [Dating with probability theory](https://towardsdatascience.com/probability-theory-and-the-optimal-dating-strategy-for-2018-2b75b26fb0b) - Here we explore what probability theory has to say about the most optimal strategy to find the love of your life.
 - [Bayes theorem and why it matters to my workout routine](https://towardsdatascience.com/how-bayesian-statistics-convinced-me-to-hit-the-gym-fa737b0a7ac): A lightweight introduction to Bayes' theorem and how it helps convince me to hit the gym.
 
-## General tutorials with Python and R:
+### General tutorials with Python and R:
 
 #### Data visualization:
 - [NetworkX and Basemap](https://towardsdatascience.com/catching-that-flight-visualizing-social-network-with-networkx-and-basemap-ce4a0d2eaea6) - Here is a comprehensive tutorial of how we can visualize geographical data with powerful tools that support Python.
