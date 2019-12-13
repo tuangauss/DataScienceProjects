@@ -5,9 +5,9 @@ In this repository, you will find the source code to various projects I have bee
 My interests lie in the intersection of statistical techniques, data visualization and sports (especially football). All the codes are written entirely in Python or R. I don't have a strong preference or attempt to make a concerted effort to code in a specific language/platform. the decision is mostly based on how specific functionalities needed for a project supported (scraping in Python and data processing with dplyr piping in R).
 
 #### The statistics of modern football:
-Here are a number of projects that explore the intricate statistical aspect of the Beautiful Game.
+A collection of projects that explore the intricate statistical aspect of the Beautiful Game
 
-- [Empirical Bayes and penalty taking ability](https://towardsdatascience.com/men-of-steel-finding-the-best-penalty-takers-with-empirical-bayes-estimation-aa0e126fb08b)
+- [Empirical Bayes and penalty taking ability](https://towardsdatascience.com/men-of-steel-finding-the-best-penalty-takers-with-empirical-bayes-estimation-aa0e126fb08b) Using Bayesian statistics to make meaningful comparison between players across Europe.
 - [Poisson process and match prediction](https://towardsdatascience.com/o-jogo-bonito-predicting-the-premier-league-with-a-random-model-1b02fa3a7e5a) - Here we learn about the Poisson process and how a random model outperforms football experts with its prediction.
 - [The mathematics of football betting strategies](https://towardsdatascience.com/making-big-bucks-with-a-data-driven-sports-betting-strategy-6c21a6869171) - With the Poisson model and some additional help from mathematical research, can we beat the bookies?
 - [Fisher vs Neyman-Person debate and Paul the Octopus](https://towardsdatascience.com/what-can-an-octopus-tell-us-about-the-biggest-debate-in-statistical-theory-f017295d781f) - We went over the theory (or many theories) of hypothesis testings and see how they apply to the psychic ability of Paul the Octopus.
