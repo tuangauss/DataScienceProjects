@@ -1,8 +1,8 @@
 ## Overview
 
-In this repository, you will find the code to various projects I have been working on or I am still in the process of developing. The majority of the projects are accompanied by a Medium blog posts at [medium.com/@tuandoan.nguyen](https://medium.com/@tuandoan.nguyen). I published almost exclusively on Towards Data Science publication through Medium's Partnership program so please check out these articles as a way to support me and my future projects. Alternatively, you can also find my blog posts at my personal website [Tuan Doan](https://tuangauss.github.io/).
+In this repository, you will find the source code to various projects I have been working on or still work-in-progress. The majority of the projects are accompanied by a Medium blog posts at [medium.com/@tuandoan.nguyen](https://medium.com/@tuandoan.nguyen). I published almost exclusively on Towards Data Science publication through Medium's Partnership program so please check out these articles as a way to support me and my future projects. Alternatively, you can also find my blog posts at my personal website [here](https://tuangauss.github.io/).
 
-My interests lie in the intersection of statistical techniques, data visualization and sports (especially football). All the codes are written entirely in Python or R. I used the two languages almost interchangebly. It really boils down to how a specific functionality in need is supported (scraping in Python and data processing with dplyr piping in R).
+My interests lie in the intersection of statistical techniques, data visualization and sports (especially football). All the codes are written entirely in Python or R. I don't have a strong preference or attempt to make a concerted effort to code in a specific language/platform. the decision is mostly based on how specific functionalities needed for a project supported (scraping in Python and data processing with dplyr piping in R).
 
 ### The statistics of modern football:
 Here are a number of projects that explore the intricate statistical aspect of the Beautiful Game
