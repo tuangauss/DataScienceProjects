@@ -3,7 +3,6 @@ packages <- c("dplyr", "fpc", "cluster",
               "factoextra", "dendextend", 
               "psych", "qgraph")
 lapply(packages, library, character.only = TRUE)
-source("http://www.reuningscherer.net/STAT660/R/parallel.r.txt")
 
 raw_df <- read.csv("./Team2015season.csv", header=T)
 # scale data 
@@ -110,13 +109,29 @@ fviz_gap_stat(gap_stat)
 #  Factor analysis
 #  Useful tutorial: 
 #  http://www.di.fc.ul.pt/~jpn/r/factoranalysis/factoranalysis.html
+#  https://rpubs.com/aaronsc32/factor-analysis-introduction
 ###################################################################
+# determined the number of factors to use with scree plot
+parallel <- fa.parallel(scaled_data,
+                        fm = 'minres',
+                        fa = 'fa')
 
 # factor analysis -- no rotation
+# Varimax: assume factors completely uncorrelated
+# Oblique: correlations in factors
+
+# Method: factanal only sipport MaxLikelihood
+# In fa (psych), we can use "PAF (pa)"
+# or "mingres", the later
+# provide results similar to `MaxLikelihood` 
+# without assuming multivariate normal distribution 
+# and derives solutions through iterative eigendecomposition like principal axis.
 fa1 <- factanal(scaled_data,
                 factors=2, 
                 rotation="none",
                 scores="regression")
+
+fa2 <- fa(data,nfactors = 3,rotate = "oblimin",fm="minres")
 fa1
 # biplot
 biplot(fa1$scores[,1:2],
