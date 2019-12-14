@@ -1,5 +1,7 @@
 # Load libraries and read files
-packages <- c("dplyr", "fpc", "cluster", "factoextra", "dendextend")
+packages <- c("dplyr", "fpc", "cluster", 
+              "factoextra", "dendextend", 
+              "psych", "qgraph")
 lapply(packages, library, character.only = TRUE)
 source("http://www.reuningscherer.net/STAT660/R/parallel.r.txt")
 
