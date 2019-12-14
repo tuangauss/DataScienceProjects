@@ -125,14 +125,19 @@ parallel <- fa.parallel(scaled_data,
 # or "mingres", the later
 # provide results similar to `MaxLikelihood` 
 # without assuming multivariate normal distribution 
-# and derives solutions through iterative eigendecomposition like principal axis.
+# and derives solutions through iterative eigendecomposition 
+# like principal axis.
 fa1 <- factanal(scaled_data,
                 factors=2, 
                 rotation="none",
                 scores="regression")
 
-fa2 <- fa(data,nfactors = 3,rotate = "oblimin",fm="minres")
+fa2 <- fa(scaled_data,
+          nfactors = 3,
+          rotate = "oblimin",
+          fm="minres")
 fa1
+
 # biplot
 biplot(fa1$scores[,1:2],
        loadings(fa1),
