@@ -106,6 +106,26 @@ gap_stat <- clusGap(scaled_data,
 print(gap_stat, method = "firstmax")
 fviz_gap_stat(gap_stat)
 
+###########################################
+#  Factor analysis
+#  Useful tutorial: 
+#  
+###########################################
+
+# factor analysis -- no rotation
+fa1 <- factanal(scaled_data,
+                factors=2, 
+                rotation="none",
+                scores="regression")
+fa1
+# biplot
+biplot(fa1$scores[,1:2],
+       loadings(fa1),
+       cex=c(0.7,0.8))
+# qgraph
+# a different visualization of biplot
+qg.fa1 <- qgraph(fa1)
+
 ##########################################################
 ##  Perform Factor Analysis using Maximum Likelihood (only option in factanal)
 ##  with Varimax Rotation
