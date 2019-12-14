@@ -126,6 +126,12 @@ biplot(fa1$scores[,1:2],
 # a different visualization of biplot
 qg.fa1 <- qgraph(fa1)
 
+# NOTE:
+# - after Exploratory Factor Analysis (EFA), 
+# - the next step could be Confirmatory Factor Analysis
+# - which is part of a larger subset: Structual Equation Modelling 
+# - https://socialsciences.mcmaster.ca/jfox/Misc/sem/SEM-paper.pdf
+
 ##########################################################
 ##  Perform Factor Analysis using Maximum Likelihood (only option in factanal)
 ##  with Varimax Rotation
