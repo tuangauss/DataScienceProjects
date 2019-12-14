@@ -106,11 +106,11 @@ gap_stat <- clusGap(scaled_data,
 print(gap_stat, method = "firstmax")
 fviz_gap_stat(gap_stat)
 
-###########################################
+###################################################################
 #  Factor analysis
 #  Useful tutorial: 
-#  
-###########################################
+#  http://www.di.fc.ul.pt/~jpn/r/factoranalysis/factoranalysis.html
+###################################################################
 
 # factor analysis -- no rotation
 fa1 <- factanal(scaled_data,
