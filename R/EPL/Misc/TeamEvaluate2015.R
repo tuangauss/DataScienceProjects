@@ -151,6 +151,39 @@ qg.fa1 <- qgraph(fa1)
 # - which is part of a larger subset: Structual Equation Modelling 
 # - https://socialsciences.mcmaster.ca/jfox/Misc/sem/SEM-paper.pdf
 
+
+# we can get some flexibility from the "psych" package
+fa_analysis <- function(data_set, factor,
+                        rotate = "varimax", fm = "pa"){
+  res <- fa(data_set, nfactors = factor,
+            rotate = rotate, fm = fm)
+  print("Factor Analysis results:")
+  print(res)
+  
+  # get loading plot for the first two factors
+  plot(res$loadings, pch=18, col='red')
+  abline(h=0)
+  abline(v=0)
+  text(res$loadings, labels=names(data_set),cex=0.8)
+  
+  #get reproduced correlation matrix
+  repro <- res$loadings%*%t(res$loadings)
+  #residual correlation matrix
+  residual <- cor(data_set)-repro
+  print("Residual correlation matrx")
+  round(resid2,2)
+  
+  #get root-mean squared residuals
+  len <- length(residual[upper.tri(residual)])
+  RMSR <- sqrt(sum(residual[upper.tri(residual)]^2)/len)
+  print("Root-mean squared residuals:", RMSR)
+  
+  #get proportion of residuals greater than 0.05 in absolute value
+  prop <- sum(rep(1,len)[abs(residual[upper.tri(residual)])>0.05])/len
+  print("Proportion of residuals greater than 0.05 in absolute value:", prop)
+}
+
+
 ##########################################################
 ##  Perform Factor Analysis using Maximum Likelihood (only option in factanal)
 ##  with Varimax Rotation
