@@ -183,6 +183,11 @@ fa_analysis <- function(data_set, factor,
   print("Proportion of residuals greater than 0.05 in absolute value:", prop)
 }
 
+# varimax - paf
+fa_analysis(soccer, 3)
+
+# quartimax - pag
+fa_analysis(soccer, 3, "quartimax", "pa")
 
 ##########################################################
 ##  Perform Factor Analysis using Maximum Likelihood (only option in factanal)
