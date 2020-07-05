@@ -120,13 +120,12 @@ parallel <- fa.parallel(scaled_data,
 # Varimax: assume factors completely uncorrelated
 # Oblique: correlations in factors
 
-# Method: factanal only sipport MaxLikelihood
-# In fa (psych), we can use "PAF (pa)"
-# or "mingres", the later
-# provide results similar to `MaxLikelihood` 
+# Method: factanal only support MaxLikelihood
+# In fa (psych), we can use "PAF (pa)" or "mingres", 
+# the later provide results similar to `MaxLikelihood` 
 # without assuming multivariate normal distribution 
-# and derives solutions through iterative eigendecomposition 
-# like principal axis.
+# and derives solutions through iterative eigen decomposition like principal axis.
+
 fa1 <- factanal(scaled_data,
                 factors=2, 
                 rotation="none",
