@@ -14,7 +14,7 @@ A collection of projects that explore the intricate statistical aspect of the Be
 
 #### Statistical theory and its application:
 
-- [Bayes theorem and a probabilistic argument for God](https://towardsdatascience.com/a-bayesian-quest-to-find-god-b30934972473)
+- [Bayes theorem and a probabilistic argument for God](https://towardsdatascience.com/a-bayesian-quest-to-find-god-b30934972473) - Bayes theory and how people have been using it to justify the necessary existence of God.
 - [Dating with probability theory](https://towardsdatascience.com/probability-theory-and-the-optimal-dating-strategy-for-2018-2b75b26fb0b) - Here we explore what probability theory has to say about the most optimal strategy to find the love of your life.
 - [Bayes theorem and why it matters to my workout routine](https://towardsdatascience.com/how-bayesian-statistics-convinced-me-to-hit-the-gym-fa737b0a7ac): A lightweight introduction to Bayes' theorem and how it helps convince me to hit the gym.
 - [The Rule of Three and its application](https://towardsdatascience.com/the-rule-of-three-calculating-the-probability-of-events-that-have-not-yet-occurred-106144dc2c39): A short introduction of the Rule of Three and how we can apply it to calculate the probability of events that have yet to happen. Application in voting, vaccine development, product quality monitoring, etc.
