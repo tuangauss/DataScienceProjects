@@ -73,3 +73,16 @@ def plot_learning_curve(iter_array, train_accuracy, test_accuracy, xlabel = 'ite
     plt.legend(loc='best', fontsize=20);
 
 plot_learning_curve(epochs, train_mse, test_mse)
+
+#train on a full dataset and make prediction
+full_trainset = data.build_full_trainset()
+algo = SVD(n_factors = 40, lr_all = 0.001, verbose=True, n_epochs = 100)
+algo.fit(full_trainset)
+
+# make prediction:
+all_book_id = full_rating.book_id.unique()
+top_n = []
+for book_id in all_book_id:
+    top_n.append(algo.predict(uid = str(53425), iid = book_id))
+top_n.sort(key=lambda x: x.est, reverse=True)
+print([id_to_name[pred.iid] for pred in top_n[:10]]
