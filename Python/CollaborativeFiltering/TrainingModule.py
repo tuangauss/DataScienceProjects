@@ -52,7 +52,6 @@ def get_mse(pred, actual):
     actual = actual[actual.nonzero()].flatten()
     return mean_squared_error(pred, actual)
 
-from numpy.linalg import solve
 
 class AlternatingLeastSquareMF():
     def __init__(self, 
@@ -181,9 +180,101 @@ class AlternatingLeastSquareMF():
             print('Train mse: ' + str(self.train_mse[-1]))
             print('Test mse: ' + str(self.test_mse[-1]))
 
+class SGDMF():
+    def __init__(self, 
+                 ratings,
+                 n_factors=40,
+                 item_fact_reg=0.0, 
+                 user_fact_reg=0.0,
+                 item_bias_reg=0.0,
+                 user_bias_reg=0.0,
+                 verbose=False
+                ):
+        """
+        Train an SGD matrix factorization model to predict empty 
+        entries in a matrix. 
+        """
+        
+        self.ratings = ratings
+        self.n_users, self.n_items = ratings.shape
+        self.n_factors = n_factors
+        self.item_fact_reg = item_fact_reg
+        self.user_fact_reg = user_fact_reg
+        self.item_bias_reg = item_bias_reg
+        self.user_bias_reg = user_bias_reg
+        self.sample_row, self.sample_col = self.ratings.nonzero()
+        self.n_samples = len(self.sample_row)
+
+    def sgd(self):
+        for idx in self.training_indices:
+            u = self.sample_row[idx]
+            i = self.sample_col[idx]
+            prediction = self.predict(u, i)
+            e = (self.ratings[u,i] - prediction) # error
             
+            # Update biases
+            self.user_bias[u] += self.learning_rate * \
+                                (e - self.user_bias_reg * self.user_bias[u])
+            self.item_bias[i] += self.learning_rate * \
+                                (e - self.item_bias_reg * self.item_bias[i])
+            
+            #Update latent factors
+            self.user_vecs[u, :] += self.learning_rate * \
+                                    (e * self.item_vecs[i, :] - \
+                                     self.user_fact_reg * self.user_vecs[u,:])
+            self.item_vecs[i, :] += self.learning_rate * \
+                                    (e * self.user_vecs[u, :] - \
+                                     self.item_fact_reg * self.item_vecs[i,:])
+    
+    def train(self, n_iter=10, learning_rate=0.1):
+        """ Train model for n_iter iterations from scratch."""
+        # initialize latent vectors        
+        self.user_vecs = np.random.random(size=(self.n_users, self.n_factors))
+        self.item_vecs = np.random.random(size=(self.n_items, self.n_factors))
+
+        self.learning_rate = learning_rate
+        self.user_bias = np.zeros(self.n_users)
+        self.item_bias = np.zeros(self.n_items)
+        self.global_bias = np.mean(self.ratings[np.where(self.ratings != 0)])
+
+        ctr = 1
+        while ctr <= n_iter:
+            self.training_indices = np.arange(self.n_samples)
+            np.random.shuffle(self.training_indices)
+            self.sgd()
+            ctr += 1
+    
+    def predict(self, u, i):
+        prediction = self.global_bias + self.user_bias[u] + self.item_bias[i]
+        prediction += self.user_vecs[u, :].dot(self.item_vecs[i, :].T)
+        return prediction
+    
+    def predict_all(self):
+        """ Predict ratings for every user and item."""
+        predictions = np.zeros((self.user_vecs.shape[0], 
+                                self.item_vecs.shape[0]))
+        for u in range(self.user_vecs.shape[0]):
+            for i in range(self.item_vecs.shape[0]):
+                predictions[u, i] = self.predict(u, i)
+                
+        return predictions
+    
+    def calculate_learning_curve(self, iter_array, test, learning_rate=0.1):
+        iter_array.sort()
+        self.train_mse =[]
+        self.test_mse = []
+        for (i, n_iter) in enumerate(iter_array):
+            self.train(n_iter, learning_rate)
+
+            predictions = self.predict_all()
+
+            self.train_mse += [get_mse(predictions, self.ratings)]
+            self.test_mse += [get_mse(predictions, test)]
+            print('Train mse: ' + str(self.train_mse[-1]))
+            print('Test mse: ' + str(self.test_mse[-1]))
             
 
+            
 def plot_learning_curve(iter_array, model):
     plt.plot(iter_array, model.train_mse, \
              label='Training', linewidth=5)
@@ -196,3 +287,7 @@ def plot_learning_curve(iter_array, model):
     plt.xlabel('iterations', fontsize=30);
     plt.ylabel('MSE', fontsize=30);
     plt.legend(loc='best', fontsize=20);
+
+    
+    
+    
