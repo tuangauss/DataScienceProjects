@@ -29,3 +29,4 @@ A collection of projects that explore the intricate statistical aspect of the Be
 #### Machine Learning practicals:
 - [End-to-end Machine Learning project with R](https://github.com/tuangauss/DataScienceProjects/blob/master/R/end_to_end_projects.R) - Here is a full data science project that covers data collection, cleaning, visualization, machine learning and validation.
 - [Unsupervised Learning - Clustering method with R](https://github.com/tuangauss/DataScienceProjects/blob/master/R/EPL/Misc/TeamEvaluate2015.R) - An introduction to an array of unsupervised learning algorithms: Hierachical clustering, k-means, and Factor Analysis.
+- [Collaborative Filtering with Python](https://towardsdatascience.com/building-my-own-2021-book-recommendation-engine-903ea10d5021) - A comprehensive guide to the mathematical details and implementation of popular Matrix Factorization methods.
