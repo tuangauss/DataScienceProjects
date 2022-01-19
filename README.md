@@ -19,6 +19,7 @@ A collection of projects that explore the intricate statistical aspect of the Be
 - [Bayes theorem and why it matters to my workout routine](https://towardsdatascience.com/how-bayesian-statistics-convinced-me-to-hit-the-gym-fa737b0a7ac): A lightweight introduction to Bayes' theorem and how it helps convince me to hit the gym.
 - [The Rule of Three and its application](https://towardsdatascience.com/the-rule-of-three-calculating-the-probability-of-events-that-have-not-yet-occurred-106144dc2c39): A short introduction of the Rule of Three and how we can apply it to calculate the probability of events that have yet to happen. Application in voting, vaccine development, product quality monitoring, etc.
 - [Lindy's effect](https://towardsdatascience.com/a-statistical-rule-to-optimize-your-life-the-lindys-effect-96d2c75b080d) A (slightly) mathematical description of the Lindy's effect and how one can use it as a guide for life.
+- [Normal Distribution with High Dimensionality](https://towardsdatascience.com/disney-movies-were-right-we-are-all-special-and-statistically-so-3bb56e79ab71): a statistical look into the myth of the "average Joe."
 
 ### General tutorials with Python and R:
 
