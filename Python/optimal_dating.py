@@ -18,21 +18,14 @@ def top_k_selection_algo(array, m, k):
   Return whether we succeed (1) or failure (0) to
   identify top-k value
   """
-  # pick the top candidate out of first m
   top_first_m = min(array[:(m-1)])
   # then for array[n:]
   # we pick first k values that is greater than max_first_m 
-  inspect_array = array[m-1:]
-  count = 0
-  max_rank = 0
-  while count < k and inspect_array:
-    value = inspect_array.pop(0)
-    if value < top_first_m:
-      count += 1
-      max_rank = max(max_rank, value)
+  inspect_array = np.array(array[m-1:])
+  qualified_cand = inspect_array[inspect_array < top_first_m][:k]
 
-  if count == k and max_rank == k:
-    return 1
+  if len(qualified_cand) == k and max(qualified_cand) == k:
+      return 1
   return 0
 
 
