@@ -4,6 +4,8 @@ In this repository, you will find the source code to various projects I have bee
 
 My interests lie in the intersection of statistical techniques, data visualization and sports (especially football). All the codes are written entirely in Python or R. I don't have a strong preference or attempt to make a concerted effort to code in a specific language/platform. The decision is mostly based on how specific functionalities needed for a project are supported (scraping in Python and data processing with dplyr piping in R).
 
+### I. Statistical application:
+
 #### The statistics of modern football:
 A collection of projects that explore the intricate statistical aspect of the Beautiful Game
 
@@ -21,7 +23,13 @@ A collection of projects that explore the intricate statistical aspect of the Be
 - [Lindy's effect](https://towardsdatascience.com/a-statistical-rule-to-optimize-your-life-the-lindys-effect-96d2c75b080d) - A (slightly) mathematical description of the Lindy's effect and how one can use it as a guide for life.
 - [Normal Distribution with High Dimensionality](https://towardsdatascience.com/disney-movies-were-right-we-are-all-special-and-statistically-so-3bb56e79ab71) - A statistical investigation into the myth of the "average Joe."
 
-### General tutorials with Python and R:
+### II. External Collaborations:
+
+#### Published papers:
+- [How social learning amplifies moral outrage expression in online social networks (Science Advances, 2021)](https://www.science.org/doi/pdf/10.1126/sciadv.abe5641) - Moral outrage shapes fundamental aspects of social life and is now widespread in online social networks. Here, we show how social learning processes amplify online moral outrage expressions over time.
+- [Application of machine learning models in predicting length of stay among healthcare workers in underserved communities in South Africa (Human Resources for Health, 2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6293620/) - We aim to use machine learning methods to predict health professional’s length of practice in the rural public healthcare sector based on their demographic information.
+
+### III. General tutorials with Python and R:
 
 #### Data visualization:
 - [NetworkX and Basemap](https://towardsdatascience.com/catching-that-flight-visualizing-social-network-with-networkx-and-basemap-ce4a0d2eaea6) - Here is a comprehensive tutorial of how we can visualize geographical data with powerful tools that support Python.
@@ -32,3 +40,5 @@ A collection of projects that explore the intricate statistical aspect of the Be
 - [End-to-end Machine Learning project with R](https://github.com/tuangauss/DataScienceProjects/blob/master/R/end_to_end_projects.R) - Here is a full data science project that covers data collection, cleaning, visualization, machine learning and validation.
 - [Unsupervised Learning - Clustering method with R](https://github.com/tuangauss/DataScienceProjects/blob/master/R/EPL/Misc/TeamEvaluate2015.R) - An introduction to an array of unsupervised learning algorithms: Hierachical clustering, k-means, and Factor Analysis.
 - [Collaborative Filtering with Python](https://towardsdatascience.com/building-my-own-2021-book-recommendation-engine-903ea10d5021) - A comprehensive guide to the mathematical details and implementation of popular Matrix Factorization methods.
+
+
