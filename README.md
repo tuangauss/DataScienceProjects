@@ -26,6 +26,7 @@ A collection of projects that explore the intricate statistical aspect of the Be
 ### II. External Collaborations:
 
 #### Published papers:
+- [A robust and scalable method to compare Percentile metrics in online experiments (Quora Data Blog, 2022)](https://quoradata.quora.com/A-Robust-and-Scalable-method-to-compare-Percentile-Metrics-in-online-experiments) Conducting statistical tests for Percentile metrics can be tricky, as they have less neat mathematical properties than other more common metrics, such as the average or the ratios. I discuss Quora's method to A/B test these metrics in a statistically valid and scalable manner.
 - [How social learning amplifies moral outrage expression in online social networks (Science Advances, 2021)](https://www.science.org/doi/pdf/10.1126/sciadv.abe5641) - Moral outrage shapes fundamental aspects of social life and is now widespread in online social networks. Here, we show how social learning processes amplify online moral outrage expressions over time.
 - [Application of machine learning models in predicting length of stay among healthcare workers in underserved communities in South Africa (Human Resources for Health, 2018)](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6293620/) - We aim to use machine learning methods to predict health professional’s length of practice in the rural public healthcare sector based on their demographic information.
 
