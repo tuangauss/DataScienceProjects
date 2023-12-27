@@ -53,3 +53,22 @@ for p in sims:
     res_arr.append(pd_res)
     title_arr.append(f" p1={str(p[0])}\n p2={str(p[1])}")
 
+colors = ['blue', 'orange']
+fig, axes = plt.subplots(1, 4, figsize=(18, 6), sharey=True)
+ax1, ax2, ax3, ax4 = axes
+for dat_df, ax, title in zip(
+                   res_arr, 
+                   [ax1, ax2, ax3, ax4],
+                   title_arr
+):
+    dat_df.plot(x='method', y='estimate', yerr = 'std', kind='bar', color = colors,
+                ax=ax, legend=False, xlabel='', ylabel = 'mean of estimates').set_title(title)
+
+for ax in axes:
+    ax.set_xticklabels(ax.get_xticklabels(), rotation = 90)
+    for side in ('right', 'top', 'left'):
+        if (ax == ax1) and (side == 'left'):
+            continue
+        else:
+            sp = ax.spines[side]
+            sp.set_visible(False)
