@@ -1,4 +1,5 @@
 from random import random
+from matplotlib import pyplot as plt
 
 def like_insta_post(p):
     "Find an error with probability p"
