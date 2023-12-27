@@ -1,4 +1,3 @@
-from random import random
 from matplotlib import pyplot as plt
 
 def like_insta_post(p):
@@ -32,3 +31,25 @@ def calc_stats(arr):
             np.mean(arr) - 1.96*np.std(arr, ddof=1),
             np.mean(arr) + 1.96*np.std(arr, ddof=1)
            )
+
+sims = [[0.3, 0.5], [0.6, 0.4], [0.7, 0.8], [0.9, 0.9]]
+# create 2 lists, 1 of data frame of values, 1 of titles
+res_arr = []
+title_arr = []
+
+for p in sims:
+    naive_estimates, lincoln_estimates = simulate(100, p[0], p[1], reps=100000)
+    naive_stats = calc_stats(naive_estimates)
+    lincoln_stats = calc_stats(lincoln_estimates)
+    naive_mean, naive_std = naive_stats[0], naive_stats[1]
+    lincoln_mean, lincoln_std = lincoln_stats[0], lincoln_stats[1]
+    
+    pd_res = pd.DataFrame(
+        {
+            "method":["naive", "Lincoln"],
+            "estimate":[naive_mean, lincoln_mean], 
+            "std": [naive_std, lincoln_std]}
+    )
+    res_arr.append(pd_res)
+    title_arr.append(f" p1={str(p[0])}\n p2={str(p[1])}")
+
