@@ -22,6 +22,7 @@ A collection of projects that explore the intricate statistical aspect of the Be
 - [The Rule of Three and its application](https://towardsdatascience.com/the-rule-of-three-calculating-the-probability-of-events-that-have-not-yet-occurred-106144dc2c39) - A short introduction of the Rule of Three and how we can apply it to calculate the probability of events that have yet to happen. Application in voting, vaccine development, product quality monitoring, etc.
 - [Lindy's effect](https://towardsdatascience.com/a-statistical-rule-to-optimize-your-life-the-lindys-effect-96d2c75b080d) - A (slightly) mathematical description of the Lindy's effect and how one can use it as a guide for life.
 - [Normal Distribution with High Dimensionality](https://towardsdatascience.com/disney-movies-were-right-we-are-all-special-and-statistically-so-3bb56e79ab71) - A statistical investigation into the myth of the "average Joe."
+- [Mark-Recapture method](https://medium.com/towards-data-science/the-statistical-theory-behind-why-your-instagram-posts-have-so-few-likes-31f46d03448b) - An intro to the statistics behind sampling theory and how you can use it to count *almost* everything
 
 ### II. External Collaborations:
 
